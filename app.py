@@ -115,11 +115,17 @@ def render_calendar(city, observed_on):
     """
 
 
+@st.cache_data
+def skyline_background():
+    return b64encode((ASSETS / "skyline.webp").read_bytes()).decode("ascii")
+
+
 def render_result(city, observed_on, score, example):
     low, high, category, color = next(b for b in AQI_BANDS if b[0] <= score <= b[1])
     context = "Example result" if example else "Prediction"
     st.html(f"""
-        <section class="answer" aria-label="{context}: AQI {score}, {category}">
+        <section class="answer" data-atmosphere="{category.lower().replace(' ', '-')}"
+                 style="--skyline:url(data:image/webp;base64,{skyline_background()})" aria-label="{context}: AQI {score}, {category}">
             <span class="answer-label">{context} for {escape(city)} · {observed_on:%d %b %Y}</span>
             <div class="answer-score"><strong>{score}</strong><span>/ 500 AQI</span></div>
             <h2><i style="background:{color}"></i>{category}</h2>
@@ -157,7 +163,7 @@ def main():
     st.html(f"""
         <header class="masthead">
             <div class="brand">
-
+                
                 <span>AirLens <em>India</em></span>
             </div>
             <span class="masthead-meta">AQI PREDICTOR &nbsp; / &nbsp; GROUP 6</span>

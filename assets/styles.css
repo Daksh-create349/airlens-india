@@ -199,3 +199,40 @@
 }
 
 @media(max-width:620px){ [data-testid="stHorizontalBlock"]:has(.answer) {flex-direction:column-reverse;} }
+
+/* The skyline illustrates the predicted AQI band. */
+.answer {
+    --air: #598489;
+    --mist: .15;
+    --softness: 0px;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #172827;
+    color: #fff;
+    border-color: #273a38;
+}
+.answer[data-atmosphere="satisfactory"] { --air: #85a19c; --mist: .20; }
+.answer[data-atmosphere="moderate"] { --air: #b1926f; --mist: .28; }
+.answer[data-atmosphere="poor"] { --air: #c98959; --mist: .36; --softness: .6px; }
+.answer[data-atmosphere="very-poor"] { --air: #b47f75; --mist: .45; --softness: 1px; }
+.answer[data-atmosphere="severe"] { --air: #95778b; --mist: .55; --softness: 1.6px; }
+.answer::before, .answer::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    pointer-events: none;
+}
+.answer::before {
+    z-index: -2;
+    background: linear-gradient(0deg, transparent 12%, var(--air) 130%), var(--skyline) 78% 55% / cover;
+    filter: blur(var(--softness));
+}
+.answer::after {
+    z-index: -1;
+    background: linear-gradient(90deg, #121e21de, #15212565),
+                linear-gradient(0deg, #101c20ef, transparent 58%),
+                linear-gradient(160deg, transparent 30%, color-mix(in srgb, var(--air) calc(var(--mist) * 100%), transparent));
+}
+.answer .answer-label, .answer .answer-score span, .answer p {color: #f6f7f4;}
+.answer h2 {color:white;}
