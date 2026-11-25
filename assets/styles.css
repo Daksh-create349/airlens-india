@@ -200,39 +200,30 @@
 
 @media(max-width:620px){ [data-testid="stHorizontalBlock"]:has(.answer) {flex-direction:column-reverse;} }
 
-/* The skyline illustrates the predicted AQI band. */
-.answer {
-    --air: #598489;
-    --mist: .15;
-    --softness: 0px;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: #172827;
-    color: #fff;
-    border-color: #273a38;
+/* One continuous atmosphere behind the whole workspace. */
+[data-testid="stAppViewContainer"] {
+    --sky-wash: #518c7926;
+    background-color: #17332f;
+    background-image: linear-gradient(90deg,#102b2cf0 0%,#12272d9c 49%,#1a293330),
+                      linear-gradient(0deg,#142a32ab,var(--sky-wash) 65%),
+                      var(--skyline);
+    background-size: cover;
+    background-position: center 58%;
+    background-attachment: fixed;
 }
-.answer[data-atmosphere="satisfactory"] { --air: #85a19c; --mist: .20; }
-.answer[data-atmosphere="moderate"] { --air: #b1926f; --mist: .28; }
-.answer[data-atmosphere="poor"] { --air: #c98959; --mist: .36; --softness: .6px; }
-.answer[data-atmosphere="very-poor"] { --air: #b47f75; --mist: .45; --softness: 1px; }
-.answer[data-atmosphere="severe"] { --air: #95778b; --mist: .55; --softness: 1.6px; }
-.answer::before, .answer::after {
-    content: "";
-    position: absolute;
-    inset: -3px;
-    pointer-events: none;
+[data-testid="stAppViewContainer"]:has([data-atmosphere="satisfactory"]) {--sky-wash:#81a9a33d;}
+[data-testid="stAppViewContainer"]:has([data-atmosphere="moderate"]) {--sky-wash:#e3b47952;}
+[data-testid="stAppViewContainer"]:has([data-atmosphere="poor"]) {--sky-wash:#dc935d72;}
+[data-testid="stAppViewContainer"]:has([data-atmosphere="very-poor"]) {--sky-wash:#b96c7099;}
+[data-testid="stAppViewContainer"]:has([data-atmosphere="severe"]) {--sky-wash:#98758bb8;}
+.masthead {border-color:#ffffff80;}
+.masthead .brand, .masthead-meta, .welcome h1, .welcome p, .app-foot, .app-foot strong {color:#fff;}
+.welcome {padding:clamp(.75rem,3.8vw,3.75rem) 0 clamp(.5rem,1.9vw,1.6rem);}
+.welcome p {max-width:55ch; text-shadow:0 1px 3px #112522;}
+[data-testid="stColumn"]:has([data-testid="stForm"]) {
+    background:#faf9f3f7;border-radius:16px;padding:clamp(1rem,2vw,1.6rem);
 }
-.answer::before {
-    z-index: -2;
-    background: linear-gradient(0deg, transparent 12%, var(--air) 130%), var(--skyline) 78% 55% / cover;
-    filter: blur(var(--softness));
-}
-.answer::after {
-    z-index: -1;
-    background: linear-gradient(90deg, #121e21de, #15212565),
-                linear-gradient(0deg, #101c20ef, transparent 58%),
-                linear-gradient(160deg, transparent 30%, color-mix(in srgb, var(--air) calc(var(--mist) * 100%), transparent));
-}
-.answer .answer-label, .answer .answer-score span, .answer p {color: #f6f7f4;}
-.answer h2 {color:white;}
+[data-testid="stMain"] [data-testid="stExpander"] {background:#f8f8f2f5;border-radius:10px;}
+.answer {background:#152924ef;border:1px solid #eef3e052;color:#fff;border-radius:16px;}
+.answer h2,.answer p,.answer .answer-label,.answer .answer-score span {color:#f5f6ed;}
+.app-foot {border-color:#ffffff65;}

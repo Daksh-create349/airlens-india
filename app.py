@@ -123,9 +123,10 @@ def skyline_background():
 def render_result(city, observed_on, score, example):
     low, high, category, color = next(b for b in AQI_BANDS if b[0] <= score <= b[1])
     context = "Example result" if example else "Prediction"
+    st.html(f"<style>:root {{ --skyline:url(data:image/webp;base64,{skyline_background()}); }}</style>")
     st.html(f"""
         <section class="answer" data-atmosphere="{category.lower().replace(' ', '-')}"
-                 style="--skyline:url(data:image/webp;base64,{skyline_background()})" aria-label="{context}: AQI {score}, {category}">
+                 aria-label="{context}: AQI {score}, {category}">
             <span class="answer-label">{context} for {escape(city)} · {observed_on:%d %b %Y}</span>
             <div class="answer-score"><strong>{score}</strong><span>/ 500 AQI</span></div>
             <h2><i style="background:{color}"></i>{category}</h2>
