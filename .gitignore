@@ -1,0 +1,21 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Jupyter autosaves
+.ipynb_checkpoints/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# macOS metadata and Office lock files
+.DS_Store
+~$*
+.~lock.*#
