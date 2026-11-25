@@ -59,7 +59,7 @@ Across the retained observations, Ahmedabad averaged **291.7 AQI**, Delhi **252.
 
 ![Notebook chart of mean AQI by calendar month, with lower averages in July through September and higher averages in winter](docs/images/monthly-aqi.png)
 
-The [analysis notebook](notebooks/AQI.ipynb) also includes the distribution of daily AQI, a city-by-month heatmap, city-level pollutant concentrations, yearly averages and pollutant correlations.
+The [analysis notebook](AQI.ipynb) also includes the distribution of daily AQI, a city-by-month heatmap, city-level pollutant concentrations, yearly averages and pollutant correlations.
 
 ## Model evaluation
 
@@ -98,7 +98,7 @@ Each dot represents a held-out city-day. Dots below the diagonal are underestima
 ├── assets/                      Stylesheet, skyline and bundled fonts
 ├── data/city_day.csv            Daily observations
 ├── models/aqi_model.pkl         Fitted pipeline, feature order and cities
-├── notebooks/AQI.ipynb          EDA, training, evaluation and export
+├── AQI.ipynb                    EDA, training, evaluation and export
 └── docs/
     ├── images/                  App screenshots and notebook figures
     ├── presentation/            Seven-slide PowerPoint and PDF
@@ -124,7 +124,7 @@ In the same environment, install the notebook and plotting tools, then launch Ju
 
 ```sh
 python -m pip install jupyterlab matplotlib seaborn
-python -m jupyterlab notebooks/AQI.ipynb
+python -m jupyterlab AQI.ipynb
 ```
 
 Select the project environment as the kernel and run the cells in order. The notebook reads `data/city_day.csv`. Its final cells refit the model, write `models/aqi_model.pkl` and reload it for the Mumbai example. Running those cells replaces the bundled model. To experiment while keeping the original artifact, run the notebook in a copy of the project.
@@ -137,7 +137,7 @@ Use the repository root as shown above, select `app.py` as the entry point and c
 
 | Deliverable | Where to find it |
 | --- | --- |
-| Data treatment, city and monthly EDA, both regressors and all evaluation metrics | [Executed notebook](notebooks/AQI.ipynb) |
+| Data treatment, city and monthly EDA, both regressors and all evaluation metrics | [Executed notebook](AQI.ipynb) |
 | Interactive AQI estimate, category guide and historical calendar | [Live app](https://airlens-india.streamlit.app/) |
 | Problem statement, cell-by-cell walkthrough and diagrams | [PDF report](docs/reports/Group%20Six.pdf) · [Editable Word report](docs/reports/Group%20Six.docx) |
 | Classroom presentation | [PowerPoint](docs/presentation/AirLens%20India%20-%20Group%20Six.pptx) · [Slide PDF](docs/presentation/AirLens%20India%20-%20Group%20Six.pdf) |
