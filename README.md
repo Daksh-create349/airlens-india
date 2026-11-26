@@ -102,7 +102,7 @@ Each dot represents a held-out city-day. Dots below the diagonal are underestima
 ├── models/aqi_model.pkl         Fitted pipeline, feature order and cities
 └── docs/
     ├── images/                  App screenshots and notebook figures
-    ├── presentation/            Seven-slide PowerPoint and PDF
+    ├── presentation/            13-slide PowerPoint and PDF
     └── reports/                 Editable Word report and PDF
 ```
 
